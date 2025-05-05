@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!--Accessibility item #1: allowing the web page to fit to all different sizes of screens -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Using Bootstrap Stylesheet -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>FitCheck</title>
+  </head>
+
+  <!-- body content is what is displayed in browser -->
+  
+  <!--Accessibility feature #2: using bootstrap to make a light background and dark text for potentially dyslexic users-->
+  <body class="bg-light text-dark">
+    <!-- Placeholder for navigation that is in navbar.html-->
+    <div id="nav-placeholder"></div>
+
+    <!-- Content of webpage -->
+    <div class="container bg-light text-dark p-3">
+      <!--Page summary:-->
+      <p>
+        FitCheck is a website for those looking to discover what there style is! Explore the different style options or take the quiz to find
+        yours...
+      </p>
+
+      <!--Dropdown #1: fit-type. this should inquire about how tight or loose people prefer their clothing-->
+      <label for="fit-type">How do you like your clothes to fit?</label>
+      <select id="fit-type" name="category">
+        <!--the first option will be the default option when page loads-->
+        <option value="NA1">No preference</option>
+        <option value="Baggy">Baggy</option>
+        <option value="Tight">Tight</option>
+      </select>
+      <p></p>
+      <!--Dropdown #1: color-type. This is mostly here for aesthetic and potential future development-->
+      <label for="color-type">What are your color preferences?</label>
+      <select id="color-type" name="category">
+        <option value="NA2">No preference</option>
+        <option value="colors">Very colorful</option>
+        <option value="no_colors">Minimal colors</option>
+      </select>
+      <p></p>
+      <!-- include a button with the purpose of submitting the results of the questions-->
+      <button type="button" id="button" aria-label="Submit your style preferences">Show me the results!</button>
+      <!--Accessibility feature #3: an aria-label can be potentially utilized for a screen reader so that the user
+      know the purpose for the button auditorally-->
+    </div>
+
+    <!--  script code to add navbar -->
+    <script>
+      // Load the navigation menu into the placeholder
+      $("#nav-placeholder").load("navbar.html");
+    </script>
+    <script>
+      //Listen for the button to be clicked and then make a constant variable for the input of the dropdown
+      document.getElementById("button").addEventListener("click", function () {
+        const fitType = document.getElementById("fit-type").value;
+        const colorType = document.getElementById("color-type").value;
+
+        //The two styles are largely based off of fit preferences, so the logic operates under that
+        if (fitType == "Baggy") {
+          window.location.href = "style1.html";
+        } else if (fitType == "Tight") {
+          window.location.href = "style2.html";
+        } else if (fitType == "NA1") {
+          window.location.href = "no-preference.html";
+        } else {
+          window.location.href = "index.html";
+        }
+      });
+    </script>
+  </body>
+</html>
